@@ -22,14 +22,6 @@ resource "aws_security_group" "web-instance" {
     protocol        = "tcp"
     security_groups = ["${aws_security_group.elb-securitygroup.id}"]
   }
-
-  ingress {
-    from_port       = 443
-    to_port         = 443
-    protocol        = "tcp"
-    security_groups = ["${aws_security_group.elb-securitygroup.id}"]
-  }
-
 }
 resource "aws_security_group" "elb-securitygroup" {
   vpc_id      = "${aws_vpc.main.id}"
